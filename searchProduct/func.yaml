@@ -1,0 +1,5 @@
+name: searchproduct
+version: 0.0.5
+runtime: go
+entrypoint: ./func
+format: json

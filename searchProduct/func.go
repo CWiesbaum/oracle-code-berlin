@@ -38,21 +38,16 @@ type BookingRecordsStruct struct {
 	} `json:"booking"`
 }
 
-type SearchRequestStruct struct {
-	ProductName string `json:"product_name"`
-	BookingRecords []BookingRecordsStruct `json:"booking_records"`
-}
-
 func findBookingRecordsByProduct(ctx context.Context, in io.Reader, out io.Writer) {
 	var fnctx = fdk.Context(ctx)
 
 	var productName = fnctx.Header.Get("ProductName")
-	var searchRequest SearchRequestStruct
+	var bookingRecords []BookingRecordsStruct
 	var resultBookingRecords []BookingRecordsStruct = make([]BookingRecordsStruct, 0)
 
-	json.NewDecoder(in).Decode(&searchRequest)
+	json.NewDecoder(in).Decode(&bookingRecords)
 
-	for _, bookingRecord := range searchRequest.BookingRecords {
+	for _, bookingRecord := range bookingRecords {
 		if strings.Contains(bookingRecord.Booking.ItemTitle, productName) {
 			resultBookingRecords = append(resultBookingRecords, bookingRecord)
 		}

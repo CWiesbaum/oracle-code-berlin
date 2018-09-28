@@ -19,7 +19,7 @@ In order to execute the following commands the following assumptions are made:
 The search product function can be called as follows:
 
 ```
-curl -X POST -H "ProductName: Bacardi Raspberry" -d @./test_data/MOCK_DATA.json http://localhost:8080/r/booking/searchProduct
+curl -X POST -H "ProductName: Bacardi Raspberry" -d @./test_data/MOCK_DATA.json http://localhost:8080/t/booking/searchproduct
 ```
 
 ## extractEmail function
@@ -28,18 +28,18 @@ The extract email function expects searchProduct function's output as input. Wit
 The extract email function can be called as follows:
 
 ```
-curl -X POST -d @./IDENTIFIED_BOOKINGS.json http://localhost:8080/r/booking/extractEmail
+curl -X POST -d @./IDENTIFIED_BOOKINGS.json http://localhost:8080/t/booking/extractemail
 ```
 
 Alternatively searchProduct and extractEmail functions can be chained on the command line:
 
 ```
-curl -X POST -H "ProductName: Bacardi Raspberry" -d @./test_data/MOCK_DATA.json http://localhost:8080/r/booking/searchProduct | curl -X POST -d @- http://localhost:8080/r/booking/extractEmail
+curl -X POST -H "ProductName: Bacardi Raspberry" -d @./test_data/MOCK_DATA.json http://localhost:8080/t/booking/searchproduct | curl -X POST -d @- http://localhost:8080/t/booking/extractemail
 ```
 
 ## identifyMarketingTargetsFlow function
 The identifyMarketingTargetsFlow function can be called as follows:
 
 ```
-curl -X POST -H "ProductName: Bacardi Raspberry" -d @./test_data/MOCK_DATA.json http://localhost:8080/r/booking/identifyMarketingTargetsFlow
+curl -X POST -H "ProductName: Bacardi Raspberry" -d @./test_data/MOCK_DATA.json http://localhost:8080/t/booking/identifymarketingtargetsflow
 ```

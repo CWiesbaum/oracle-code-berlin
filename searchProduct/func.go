@@ -39,9 +39,9 @@ type BookingRecordsStruct struct {
 }
 
 func findBookingRecordsByProduct(ctx context.Context, in io.Reader, out io.Writer) {
-	var fnctx = fdk.Context(ctx)
+	fnctx := fdk.Context(ctx)
 
-	var productName = fnctx.Header.Get("ProductName")
+	var productName = fnctx.Header.Get("Fn-Http-H-Productname")
 	var bookingRecords []BookingRecordsStruct
 	var resultBookingRecords []BookingRecordsStruct = make([]BookingRecordsStruct, 0)
 
